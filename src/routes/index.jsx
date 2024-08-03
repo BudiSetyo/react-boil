@@ -1,19 +1,37 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ErrorPage from "@/pages/error";
-
 import Home from "@/pages/home";
-import Blog from "@/pages/blog";
+import Posts from "@/pages/posts";
+import Users from "@/pages/users";
+
+import { MainLayout } from "@/components";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <MainLayout>
+        <Home />
+      </MainLayout>
+    ),
     errorElement: <ErrorPage />,
   },
   {
-    path: "/blog",
-    element: <Blog />,
+    path: "/posts",
+    element: (
+      <MainLayout>
+        <Posts />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/users",
+    element: (
+      <MainLayout>
+        <Users />
+      </MainLayout>
+    ),
   },
 ]);
 

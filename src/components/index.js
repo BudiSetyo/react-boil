@@ -1,3 +1,6 @@
-import Navbar from "./navbar";
+// Layout
+import MainLayout from "./layouts/main";
 
-export { Navbar };
+import Navbar from "./navbarMobile";
+
+export { Navbar, MainLayout };
