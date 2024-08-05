@@ -15,7 +15,7 @@ const NavbarMobile = () => {
 
   return (
     <main>
-      <div className="h-10 z-20 p-2 flex items-center bg-white shadow-lg sticky inset-x-0 top-0">
+      <div className="h-10 z-50 p-2 flex items-center bg-white shadow-lg sticky inset-x-0 top-0">
         <button className="text-gray-500" onClick={() => setToggle(!toggle)}>
           {toggle ? <CloseOutlined /> : <MenuOutlined />}
         </button>
@@ -24,7 +24,7 @@ const NavbarMobile = () => {
       {toggle && (
         <div
           data-aos="fade-right"
-          className="absolute inset-x-0 top-10 bottom-0 bg-white p-2"
+          className="z-40 absolute inset-x-0 top-10 bottom-0 bg-white p-2"
         >
           <div className="flex flex-col gap-2 text-gray-800 font-semibold">
             {menuData.map((menu, index) => {
