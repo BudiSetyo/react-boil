@@ -44,8 +44,7 @@ const NavbarMobile = () => {
 
       {toggle && (
         <div
-          className="absolute inset-x-0 top-10 bottom-0 bg-[#00000033] w-full z-30"
-          onClick={() => setToggle(!toggle)}
+          className="absolute w-full top-10 bottom-0 bg-[#00000033] z-20"
         >
           <div className="z-40 absolute bottom-0 top-0 bg-gray-100 container mx-auto max-w-screen-sm-md w-full md:w-1/2 flex flex-col justify-between font-semibold text-gray-700 p-2">
             <div className="flex flex-col gap-2">
