@@ -6,8 +6,10 @@ import Icon, {
   LogoutOutlined,
   HomeOutlined,
   UserOutlined,
+  ExclamationCircleOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Button, Modal } from "antd";
 
 const NavbarMobile = () => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const NavbarMobile = () => {
 
   const [currentPage, setCurrentPage] = useState(location.pathname);
   const [toggle, setToggle] = useState(false);
+  const [modalLogout, setModalLogout] = useState(false);
 
   const menuData = [
     { name: "home", icon: HomeOutlined },
@@ -43,9 +46,7 @@ const NavbarMobile = () => {
       </div>
 
       {toggle && (
-        <div
-          className="absolute w-full top-10 bottom-0 bg-[#00000033] z-20"
-        >
+        <div className="absolute w-full top-10 bottom-0 bg-[#00000033] z-20">
           <div className="z-40 absolute bottom-0 top-0 bg-gray-100 container mx-auto max-w-screen-sm-md w-full md:w-1/2 flex flex-col justify-between font-semibold text-gray-700 p-2">
             <div className="flex flex-col gap-2">
               {menuData.map((menu, index) => {
@@ -69,7 +70,7 @@ const NavbarMobile = () => {
             </div>
             <button
               className="bg-gray-200 hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-full border border-gray-300"
-              onClick={() => {}}
+              onClick={() => setModalLogout(!modalLogout)}
             >
               <span className="text-gray-400">
                 <Icon component={LogoutOutlined} />
@@ -79,6 +80,24 @@ const NavbarMobile = () => {
           </div>
         </div>
       )}
+
+      <Modal
+        open={modalLogout}
+        onCancel={() => setModalLogout(!modalLogout)}
+        width={240}
+        footer={[]}
+      >
+        <div className="flex flex-col items-center text-center gap-3 mt-4">
+          <ExclamationCircleOutlined className="text-yellow-500 text-2xl" />
+          <h1>Are you sure to Logout ?</h1>
+
+          <div className="flex justify-center">
+            <Button danger onClick={() => alert("logout success")} size="small">
+              Confirm
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </main>
   );
 };
