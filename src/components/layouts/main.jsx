@@ -3,10 +3,10 @@ import { Navbar } from "@/components";
 
 const MainLayout = ({ children }) => {
   return (
-    <main className="w-full bg-gray-200 absolute inset-y-0 flex justify-center">
-      <main className="container bg-white w-full max-w-screen-md absolute inset-y-0">
+    <main className="w-full bg-gray-200 absolute inset-y-0 flex justify-center max-h-screen overflow-auto box-border">
+      <main className="container bg-white w-full max-w-screen-lg min-h-screen absolute border box-border">
         <Navbar />
-        <section className="p-4">{children}</section>
+        <section className="px-4 pb-4 pt-12 box-border">{children}</section>
       </main>
     </main>
   );
