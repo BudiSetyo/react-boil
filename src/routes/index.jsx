@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import ErrorPage from "@/pages/error";
+import Error from "@/pages/error";
 import Home from "@/pages/home";
 import Posts from "@/pages/posts";
 import Users from "@/pages/users";
+import Auth from "@/pages/auth";
 
 import { MainLayout } from "@/components";
 
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
         <Home />
       </MainLayout>
     ),
-    errorElement: <ErrorPage />,
+    errorElement: <Error />,
   },
   {
     path: "/posts",
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         <Users />
       </MainLayout>
     ),
+  },
+  {
+    path: "/auth",
+    element: <Auth />,
   },
 ]);
 

@@ -6,8 +6,10 @@ import Icon, {
   LogoutOutlined,
   HomeOutlined,
   UserOutlined,
+  ExclamationCircleOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Modal, Button } from "antd";
 
 const NavbarMobile = () => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const NavbarMobile = () => {
 
   const [currentPage, setCurrentPage] = useState(location.pathname);
   const [toggle, setToggle] = useState(false);
+  const [modalLogout, setModalLogout] = useState(false);
 
   const menuData = [
     { name: "home", icon: HomeOutlined },
@@ -70,7 +73,7 @@ const NavbarMobile = () => {
           </div>
           <button
             className="bg-gray-200 hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-full border border-gray-300"
-            onClick={() => {}}
+            onClick={() => setModalLogout(!modalLogout)}
           >
             <span className="text-gray-400">
               <Icon component={LogoutOutlined} />
@@ -92,6 +95,32 @@ const NavbarMobile = () => {
           }`}
         />
       </div>
+
+      <Modal
+        open={modalLogout}
+        onCancel={() => setModalLogout(!modalLogout)}
+        width={300}
+        footer={[]}
+      >
+        <div className="flex justify-center items-center gap-4 flex-col py-4">
+          <ExclamationCircleOutlined className="text-2xl text-yellow-500" />
+
+          <p>Are you sure to logout ?</p>
+
+          <div>
+            <Button
+              size="small"
+              danger
+              onClick={() => {
+                setModalLogout(!modalLogout);
+                alert("Logout Success Brother");
+              }}
+            >
+              Confirm
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </main>
   );
 };
