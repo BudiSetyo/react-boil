@@ -30,6 +30,13 @@ const NavbarMobile = () => {
     navigate(`/${dest == "home" ? "" : dest}`);
   };
 
+  const handleLogout = () => {
+    setModalLogout(!modalLogout);
+    navigate("/auth");
+    localStorage.removeItem("state");
+    return localStorage.removeItem("token");
+  };
+
   useEffect(() => {
     setCurrentPage(location.pathname === "/" ? "/home" : location.pathname);
   }, [location.pathname]);
@@ -102,20 +109,13 @@ const NavbarMobile = () => {
         width={300}
         footer={[]}
       >
-        <div className="flex justify-center items-center gap-4 flex-col py-4">
-          <ExclamationCircleOutlined className="text-2xl text-yellow-500" />
+        <div className="flex justify-center items-center gap-4 flex-col">
+          <ExclamationCircleOutlined className="text-4xl text-yellow-500" />
 
-          <p>Are you sure to logout ?</p>
+          <p className="text-lg">Do you want to logout ?</p>
 
           <div>
-            <Button
-              size="small"
-              danger
-              onClick={() => {
-                setModalLogout(!modalLogout);
-                alert("Logout Success Brother");
-              }}
-            >
+            <Button size="" type="primary" danger onClick={handleLogout}>
               Confirm
             </Button>
           </div>
