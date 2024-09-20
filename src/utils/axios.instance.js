@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   // Base URL for API requests
-  baseURL: "https://api.olakses.com/v1",
+  baseURL: import.meta.env.VITE_API_URL,
 
   // Custom headers
   headers: {
