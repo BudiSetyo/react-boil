@@ -1,12 +1,12 @@
 import { Table, Button, Input } from "antd";
 import { EditOutlined, PlusCircleOutlined } from "@ant-design/icons";
-import { postColumns } from "../posts.column";
-import useTablePosts from "../hooks/useTablePosts";
-import DrawerEditPost from "./drawerEdit.post";
-import DrawerPost from "./drawer.post";
+import { userColumns } from "../user.column";
+import useTableUsers from "../hooks/useTableUser";
+import DrawerEditUser from "./drawerEdit.user";
+import DrawerUser from "./drawer.user";
 
-const TablePost = () => {
-  const { states, handles, query } = useTablePosts();
+const TableUser = () => {
+  const { states, query, handles } = useTableUsers();
 
   const dataSource = states.filteredData?.map((item, index) => ({
     key: index + 1,
@@ -19,7 +19,7 @@ const TablePost = () => {
   }));
 
   const columns = [
-    ...postColumns,
+    ...userColumns,
     {
       title: "Actions",
       render: (_, record) => (
@@ -29,7 +29,7 @@ const TablePost = () => {
             icon={<EditOutlined className="text-blue-500" />}
             onClick={() => {
               handles.handleToogle("edit");
-              handles.handleSetPost(record.id);
+              handles.handleSetUser(record);
             }}
           />
         </div>
@@ -72,18 +72,17 @@ const TablePost = () => {
         loading={query.isLoading}
       />
 
-      <DrawerPost
+      <DrawerUser
         open={states.toogle.drawer}
         onClose={() => handles.handleToogle("drawer")}
       />
 
-      <DrawerEditPost
+      <DrawerEditUser
         open={states.toogle.edit}
         onClose={() => handles.handleToogle("edit")}
-        postId={states.postId}
       />
     </div>
   );
 };
 
-export default TablePost;
+export default TableUser;

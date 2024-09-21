@@ -11,7 +11,7 @@ export const getPost = async (postId) => {
 };
 
 export const createPost = async (data) => {
-  const response = await axiosInstance.post("/posts", { ...data });
+  const response = await axiosInstance.post("/posts", data);
   return response.data;
 };
 

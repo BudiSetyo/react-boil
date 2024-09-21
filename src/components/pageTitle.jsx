@@ -1,14 +1,18 @@
 import PropTypes from "prop-types";
+import { UserOutlined } from "@ant-design/icons";
 
-const PageTitle = ({ title = "title" }) => {
+const PageTitle = ({ title = "title", icon = <UserOutlined /> }) => {
   return (
-    <div className="rounded-r-xl w-fit pl-2 pr-4 mb-6 shadow bg-gradient-to-r from-yellow-500 via-purple-500 to-pink-500">
-      <h1 className="text-xl font-bold uppercase font-mono">{title}</h1>
+    <div className="w-fit mb-2 shadow px-4 py-1 border flex gap-2 items-center rounded-3xl">
+      <p className="text-xl">{icon}</p>
+
+      <h1 className="text-md font-semibold uppercase italic">{title}</h1>
     </div>
   );
 };
 
 PageTitle.propTypes = {
+  icon: PropTypes.any,
   title: PropTypes.string,
 };
 
