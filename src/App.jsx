@@ -2,11 +2,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Routes from "@/routes";
 import { StateProvider } from "./context/state.context";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
+import queryClient from "./query/queryClient";
 
 function App() {
   AOS.init();
-  const queryClient = new QueryClient();
 
   return (
     <StateProvider>

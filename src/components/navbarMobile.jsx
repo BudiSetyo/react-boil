@@ -15,6 +15,7 @@ import logo from "../assets/logo.png";
 const NavbarMobile = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const token = localStorage.getItem("token");
 
   const [currentPage, setCurrentPage] = useState(location.pathname);
   const [toggle, setToggle] = useState(false);
@@ -35,12 +36,19 @@ const NavbarMobile = () => {
     setModalLogout(!modalLogout);
     navigate("/auth");
     localStorage.removeItem("state");
-    return localStorage.removeItem("token");
+    localStorage.removeItem("token");
+    return;
   };
 
   useEffect(() => {
     setCurrentPage(location.pathname === "/" ? "/posts" : location.pathname);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/auth");
+    }
+  }, [token, navigate]);
 
   return (
     <main className="sticky inset-y-0 inset-x-0 z-50 box-border">

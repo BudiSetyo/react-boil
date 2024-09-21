@@ -1,14 +1,23 @@
-import { Table, Button } from "antd";
+import { Table, Button, Input } from "antd";
 import { EditOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import { postColumns } from "../posts.column";
-import { usePosts } from "@/query/post.query";
+
 import useTablePosts from "../hooks/useTablePosts";
 import DrawerEditPost from "./drawerEdit.post";
 import DrawerPost from "./drawer.post";
 
 const TablePost = () => {
-  const { data, isLoading } = usePosts();
-  const { states, handles } = useTablePosts();
+  const { states, handles, query } = useTablePosts();
+
+  const dataSource = states.filteredData?.map((item, index) => ({
+    key: index + 1,
+    ...item,
+  }));
+
+  const initialData = query.data?.data.map((item, index) => ({
+    key: index + 1,
+    ...item,
+  }));
 
   const columns = [
     ...postColumns,
@@ -31,7 +40,17 @@ const TablePost = () => {
   ];
 
   return (
-    <div className="shadow rounded border bg-white p-2">
+    <div className="shadow rounded border bg-white p-4">
+      <div className="bg-white mb-8">
+        <Input.Search
+          className="w-full"
+          placeholder="input search text"
+          allowClear
+          enterButton="Search"
+          onSearch={handles.handleSearch}
+        />
+      </div>
+
       <div className=" mb-2">
         <Button
           className="shadow"
@@ -46,11 +65,12 @@ const TablePost = () => {
       <Table
         className="overflow-auto bg-white border rounded"
         columns={columns}
-        dataSource={data?.data.map((item, index) => ({
-          key: index + 1,
-          ...item,
-        }))}
-        loading={isLoading}
+        dataSource={
+          states.search || states.filteredData?.length
+            ? dataSource
+            : initialData
+        }
+        loading={query.isLoading}
       />
 
       <DrawerPost

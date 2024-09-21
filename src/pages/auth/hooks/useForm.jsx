@@ -18,8 +18,9 @@ const useForm = () => {
       .then((res) => {
         setLoading(false);
         setState({ ...state, auth: res.data });
+        const token = res.data?.token;
 
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", token);
 
         message.success(res.message || "Login success");
         return navigate("/");

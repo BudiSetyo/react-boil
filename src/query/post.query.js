@@ -11,12 +11,16 @@ export const usePosts = () => {
 
   const mutationCreate = useMutation({
     mutationFn: createPost,
-    onSuccess: queryClient.invalidateQueries(POSTS_QUERY_KEY),
+    onSuccess: queryClient.invalidateQueries({
+      queryKey: [POSTS_QUERY_KEY],
+    }),
   });
 
   const mutationEdit = useMutation({
     mutationFn: editPost,
-    onSuccess: queryClient.invalidateQueries(POSTS_QUERY_KEY),
+    onSuccess: queryClient.invalidateQueries({
+      queryKey: [POSTS_QUERY_KEY],
+    }),
   });
 
   return { data, error, isLoading, mutationCreate, mutationEdit };
