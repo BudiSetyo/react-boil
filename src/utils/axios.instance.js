@@ -12,28 +12,19 @@ const axiosInstance = axios.create({
   timeout: 50000, // 50 seconds
 });
 
-// Add a response interceptor to handle 401 errors
 axiosInstance.interceptors.response.use(
   (response) => {
-    // Log successful response
-    // console.log(`Response received: ${response.status} ${response.statusText}`);
     return response;
   },
   (error) => {
-    // Check if the error response is a 401 Unauthorized
     if (error.response && error.response.status === 401) {
-      // console.error("401 Unauthorized. Redirecting to login.");
       message.warning("401 Unauthorized. Redirecting to login.");
 
-      // Remove token and state from localStorage
       localStorage.removeItem("token");
       localStorage.removeItem("state");
 
-      // Redirect to the auth page (assuming you're using react-router-dom)
-      window.location.href = "/auth"; // Navigate to login page
+      window.location.href = "/auth";
     } else {
-      // Log other errors
-      // console.error(`Error occurred: ${error.message}`);
       message.error(error.message);
     }
 

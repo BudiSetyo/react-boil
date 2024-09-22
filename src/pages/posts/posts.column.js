@@ -11,7 +11,7 @@ export const postColumns = [
     title: "Description",
     dataIndex: "paragraph",
     key: "paragraph",
-    width: 300,
+    width: 200,
   },
   {
     title: "Updated",
@@ -25,7 +25,7 @@ export const postColumns = [
     title: "Created",
     dataIndex: "created_at",
     key: "created_at",
-    width: 60,
+    width: 100,
     render: (_, record) =>
       moment(record.created_at).format("YYYY-MM-DD HH:mm:ss"),
   },

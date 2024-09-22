@@ -11,8 +11,6 @@ const useDrawerEdit = (postId, onClose) => {
   const [imageUrl, setImageUrl] = useState();
   const [postData, setPostData] = useState({});
 
-  // console.log(postData);
-
   const getBase64 = (img, callback) => {
     const reader = new FileReader();
     reader.addEventListener("load", () => callback(reader.result));
@@ -54,8 +52,6 @@ const useDrawerEdit = (postId, onClose) => {
   const onFinish = (values) => {
     const newValues = { ...values, image: imageUrl };
     mutationEdit.mutate({ id: postId, data: newValues });
-
-    message.success("Success edit post");
 
     return onClose();
   };

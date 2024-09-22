@@ -48,13 +48,12 @@ const useDrawer = (onClose) => {
     if (!imageUrl) {
       return message.error("Post image is required!");
     }
-
     const newValues = { ...values, image: imageUrl };
 
     mutationCreate.mutate(newValues);
     onClose();
 
-    return message.success("Create post succesfuly");
+    return;
   };
 
   return {

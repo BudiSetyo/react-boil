@@ -8,21 +8,20 @@ const useTableUsers = () => {
     drawer: false,
     edit: false,
   });
-  const [userId, setUserId] = useState();
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
+  const [userData, setUserData] = useState({});
 
-  const handleToogle = (key) => {
+  const handleUserData = (data) => setUserData(data);
+
+  const handleToogle = (key) =>
     setToogle((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
-
-  const handleSetUser = (postId) => setUserId(postId);
 
   const handleSearch = (value) => {
     setSearch(value);
 
     const dataFilter = data?.data.filter((item) =>
-      item.title.toLowerCase().includes(value.toLowerCase())
+      item.name.toLowerCase().includes(value.toLowerCase())
     );
 
     if (!value) {
@@ -38,8 +37,8 @@ const useTableUsers = () => {
 
   return {
     query: { data, isLoading },
-    states: { toogle, userId, filteredData, search },
-    handles: { handleToogle, handleSetUser, handleSearch },
+    states: { toogle, filteredData, search, userData },
+    handles: { handleToogle, handleSearch, handleUserData },
   };
 };
 

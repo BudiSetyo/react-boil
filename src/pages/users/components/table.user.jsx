@@ -29,7 +29,7 @@ const TableUser = () => {
             icon={<EditOutlined className="text-blue-500" />}
             onClick={() => {
               handles.handleToogle("edit");
-              handles.handleSetUser(record);
+              handles.handleUserData(record);
             }}
           />
         </div>
@@ -77,10 +77,13 @@ const TableUser = () => {
         onClose={() => handles.handleToogle("drawer")}
       />
 
-      <DrawerEditUser
-        open={states.toogle.edit}
-        onClose={() => handles.handleToogle("edit")}
-      />
+      {states.toogle.edit && (
+        <DrawerEditUser
+          open={states.toogle.edit}
+          onClose={() => handles.handleToogle("edit")}
+          data={states.userData}
+        />
+      )}
     </div>
   );
 };

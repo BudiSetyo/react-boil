@@ -1,24 +1,30 @@
-import { message } from "antd";
-import { useState } from "react";
 import { useUsers } from "@/query/user.query";
+import { message } from "antd";
 
-const useDrawerEdit = (onClose) => {
-  const { mutationEdit } = useUsers();
-  const [userData, setUserData] = useState({});
-
-  const handleSetUserData = (data) => setUserData(data);
+const useDrawerEdit = (onClose, userData) => {
+  const { mutationEdit, mutationPassword } = useUsers();
 
   const onFinish = (values) => {
-    mutationEdit.mutate({ id: userData.id, data: values });
+    mutationEdit.mutate({ userId: userData?.id, data: values });
 
-    message.success("Success edit user");
+    return onClose();
+  };
+
+  const onFinishPassword = (values) => {
+    if (values.password !== values.retype_password) {
+      return message.error("Password doesn't same!");
+    }
+
+    mutationPassword.mutate({
+      userId: userData?.id,
+      data: { password: values.password },
+    });
 
     return onClose();
   };
 
   return {
-    states: { userData },
-    handles: { onFinish, handleSetUserData },
+    handles: { onFinish, onFinishPassword },
   };
 };
 
