@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Navbar } from "@/components";
+import { Navbar, SuspenseLoading } from "@/components";
 import { Suspense } from "react";
 
 const MainLayout = ({ children }) => {
@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
       <main className="container bg-white w-full max-w-screen-lg min-h-screen absolute border box-border">
         <Navbar />
         <section className="px-4 pb-4 pt-12 box-border">
-          <Suspense>{children}</Suspense>
+          <Suspense fallback={<SuspenseLoading />}>{children}</Suspense>
         </section>
       </main>
     </main>
