@@ -12,8 +12,8 @@ const Auth = () => {
   return (
     <main className="bg-gray-200 min-h-screen flex justify-center items-center">
       <div className="bg-white min-w-80 py-4 px-8 rounded-lg">
-        <div className="flex justify-center">
-          <Image width={120} src={Logo} />
+        <div className="flex justify-center my-10">
+          <Image width={240} src={Logo} />
         </div>
 
         <Form
@@ -27,6 +27,7 @@ const Auth = () => {
           layout="vertical"
         >
           <Form.Item
+            className="font-semibold"
             label="Email"
             name="email"
             rules={[
@@ -40,6 +41,7 @@ const Auth = () => {
           </Form.Item>
 
           <Form.Item
+            className="font-semibold"
             label="Password"
             name="password"
             rules={[
@@ -52,7 +54,7 @@ const Auth = () => {
             <Input.Password placeholder="Password" />
           </Form.Item>
 
-          <Form.Item className="flex justify-end">
+          <Form.Item className="flex justify-end mt-10">
             <Button type="primary" htmlType="submit">
               Submit
             </Button>

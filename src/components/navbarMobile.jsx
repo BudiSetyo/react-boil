@@ -4,7 +4,7 @@ import Icon, {
   CloseOutlined,
   FileAddOutlined,
   LogoutOutlined,
-  HomeOutlined,
+  // HomeOutlined,
   UserOutlined,
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
@@ -20,8 +20,7 @@ const NavbarMobile = () => {
   const [modalLogout, setModalLogout] = useState(false);
 
   const menuData = [
-    { name: "home", icon: HomeOutlined },
-    { name: "posts", icon: FileAddOutlined },
+    { name: "home", icon: FileAddOutlined },
     { name: "users", icon: UserOutlined },
   ];
 
@@ -66,7 +65,9 @@ const NavbarMobile = () => {
                   <span className="text-gray-400">
                     <Icon component={menu.icon} />
                   </span>
-                  <p className="capitalize">{menu.name}</p>
+                  <p className="capitalize">
+                    {menu.name == "home" ? "posts" : menu.name}
+                  </p>
                 </button>
               );
             })}
