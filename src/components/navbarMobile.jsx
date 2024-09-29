@@ -9,33 +9,52 @@ import Icon, {
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Modal, Button } from "antd";
+import { Modal, Button, Image } from "antd";
+import logo from "../assets/logo.png";
 
 const NavbarMobile = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const token = localStorage.getItem("token");
 
   const [currentPage, setCurrentPage] = useState(location.pathname);
   const [toggle, setToggle] = useState(false);
   const [modalLogout, setModalLogout] = useState(false);
 
   const menuData = [
-    { name: "home", icon: FileAddOutlined },
+    // { name: "home", icon: HomeOutlined },
+    { name: "posts", icon: FileAddOutlined },
     { name: "users", icon: UserOutlined },
   ];
 
   const handleMenu = (dest) => {
     setToggle(!toggle);
-    navigate(`/${dest == "home" ? "" : dest}`);
+    navigate(`/${dest == "posts" ? "" : dest}`);
+  };
+
+  const handleLogout = () => {
+    setModalLogout(!modalLogout);
+    navigate("/auth");
+    localStorage.removeItem("state");
+    localStorage.removeItem("token");
+    return;
   };
 
   useEffect(() => {
-    setCurrentPage(location.pathname === "/" ? "/home" : location.pathname);
+    setCurrentPage(location.pathname === "/" ? "/posts" : location.pathname);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/auth");
+    }
+  }, [token, navigate]);
 
   return (
     <main className="sticky inset-y-0 inset-x-0 z-50 box-border">
-      <div className="absolute z-50 w-full h-10 p-2 flex items-center bg-gray-100 shadow-lg">
+      <div className="absolute z-50 w-full h-10 p-2 flex justify-between items-center bg-gray-100 shadow-lg">
+        <Image width={120} src={logo} preview={false} />
+
         <button
           className="text-gray-500 rounded hover:bg-gray-200 px-1"
           onClick={() => setToggle(!toggle)}
@@ -103,20 +122,13 @@ const NavbarMobile = () => {
         width={300}
         footer={[]}
       >
-        <div className="flex justify-center items-center gap-4 flex-col py-4">
-          <ExclamationCircleOutlined className="text-2xl text-yellow-500" />
+        <div className="flex justify-center items-center gap-4 flex-col">
+          <ExclamationCircleOutlined className="text-4xl text-yellow-500" />
 
-          <p>Are you sure to logout ?</p>
+          <p className="text-lg">Do you want to logout ?</p>
 
           <div>
-            <Button
-              size="small"
-              danger
-              onClick={() => {
-                setModalLogout(!modalLogout);
-                alert("Logout Success Brother");
-              }}
-            >
+            <Button size="" type="primary" danger onClick={handleLogout}>
               Confirm
             </Button>
           </div>

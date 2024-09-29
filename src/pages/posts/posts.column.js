@@ -1,4 +1,6 @@
-export const postCollumns = [
+import moment from "moment";
+
+export const postColumns = [
   {
     title: "Title",
     dataIndex: "title",
@@ -7,15 +9,8 @@ export const postCollumns = [
   },
   {
     title: "Description",
-    dataIndex: "description",
-    key: "description",
-    width: 300,
-  },
-  {
-    title: "Image",
-    dataIndex: "image",
-    key: "image",
-    ellipsis: true,
+    dataIndex: "paragraph",
+    key: "paragraph",
     width: 200,
   },
   {
@@ -23,11 +18,15 @@ export const postCollumns = [
     dataIndex: "updated_at",
     key: "updated_at",
     width: 100,
+    render: (_, record) =>
+      moment(record.updated_at).format("YYYY-MM-DD HH:mm:ss"),
   },
   {
     title: "Created",
     dataIndex: "created_at",
     key: "created_at",
     width: 100,
+    render: (_, record) =>
+      moment(record.created_at).format("YYYY-MM-DD HH:mm:ss"),
   },
 ];

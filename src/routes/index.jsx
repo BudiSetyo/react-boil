@@ -16,16 +16,7 @@ const router = createBrowserRouter([
         <Posts />
       </MainLayout>
     ),
-    errorElement: <Error />,
   },
-  // {
-  //   path: "/posts",
-  //   element: (
-  //     <MainLayout>
-  //       <Posts />
-  //     </MainLayout>
-  //   ),
-  // },
   {
     path: "/users",
     element: (
@@ -37,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <Auth />,
+  },
+  {
+    path: "*",
+    element: <Error errorCode={404} />,
+  },
+  {
+    path: "/server-error",
+    element: <Error errorCode={500} />,
   },
 ]);
 
