@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { POSTS_QUERY_KEY } from "./key";
-import { getPosts, createPost, editPost } from "@/apis/post.api";
+import { getPosts, createPost, editPost, deletePost } from "@/apis/post.api";
 import queryClient from "./queryClient";
 import { message } from "antd";
 
@@ -28,9 +28,27 @@ export const usePosts = () => {
         queryKey: [POSTS_QUERY_KEY],
       });
 
-      return message.success(data?.message || "Post created successfully");
+      return message.success(data?.message || "Post edited successfully");
     },
   });
 
-  return { data, error, isLoading, mutationCreate, mutationEdit };
+  const mutationDelete = useMutation({
+    mutationFn: deletePost,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: [POSTS_QUERY_KEY],
+      });
+
+      return message.success(data?.message || "Post deleted successfully");
+    },
+  });
+
+  return {
+    data,
+    error,
+    isLoading,
+    mutationCreate,
+    mutationEdit,
+    mutationDelete,
+  };
 };

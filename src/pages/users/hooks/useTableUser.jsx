@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useUsers } from "@/query/user.query";
 
 const useTableUsers = () => {
-  const { data, isLoading } = useUsers();
+  const { data, isLoading, mutationDelete } = useUsers();
 
   const [toogle, setToogle] = useState({
     drawer: false,
     edit: false,
+    delete: false,
   });
+
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
   const [userData, setUserData] = useState({});
@@ -31,6 +33,12 @@ const useTableUsers = () => {
     return setFilteredData(dataFilter);
   };
 
+  const handleDeleteUser = () => {
+    mutationDelete.mutate(userData.id);
+    handleUserData({});
+    return handleToogle("delete");
+  };
+
   useEffect(() => {
     setFilteredData(data?.data);
   }, [data?.data]);
@@ -38,7 +46,7 @@ const useTableUsers = () => {
   return {
     query: { data, isLoading },
     states: { toogle, filteredData, search, userData },
-    handles: { handleToogle, handleSearch, handleUserData },
+    handles: { handleToogle, handleSearch, handleUserData, handleDeleteUser },
   };
 };
 

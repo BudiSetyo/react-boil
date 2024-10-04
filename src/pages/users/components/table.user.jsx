@@ -1,9 +1,14 @@
 import { Table, Button, Input } from "antd";
-import { EditOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  PlusCircleOutlined,
+} from "@ant-design/icons";
 import { userColumns } from "../user.column";
 import useTableUsers from "../hooks/useTableUser";
 import DrawerEditUser from "./drawerEdit.user";
 import DrawerUser from "./drawer.user";
+import { ModalPermission } from "@/components";
 
 const TableUser = () => {
   const { states, query, handles } = useTableUsers();
@@ -29,6 +34,15 @@ const TableUser = () => {
             icon={<EditOutlined className="text-blue-500" />}
             onClick={() => {
               handles.handleToogle("edit");
+              handles.handleUserData(record);
+            }}
+          />
+
+          <Button
+            className="w-full"
+            icon={<DeleteOutlined className="text-red-500" />}
+            onClick={() => {
+              handles.handleToogle("delete");
               handles.handleUserData(record);
             }}
           />
@@ -84,6 +98,18 @@ const TableUser = () => {
           data={states.userData}
         />
       )}
+
+      <ModalPermission
+        open={states.toogle.delete}
+        onCancel={() => handles.handleToogle("delete")}
+        onConfirm={handles.handleDeleteUser}
+        content={
+          <p>
+            Are you sure to delete user{" "}
+            <span className="text-blue-500">{states.userData?.name}</span> ?
+          </p>
+        }
+      />
     </div>
   );
 };

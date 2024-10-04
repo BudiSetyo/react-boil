@@ -2,21 +2,24 @@ import { useEffect, useState } from "react";
 import { usePosts } from "@/query/post.query";
 
 const useTablePosts = () => {
-  const { data, isLoading } = usePosts();
+  const { data, isLoading, mutationDelete } = usePosts();
 
   const [toogle, setToogle] = useState({
     drawer: false,
     edit: false,
+    delete: false,
   });
   const [postId, setPostId] = useState();
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
+  const [postData, setPostData] = useState({});
 
   const handleToogle = (key) => {
     setToogle((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const handleSetPost = (postId) => setPostId(postId);
+  const handleSetPostData = (data) => setPostData(data);
 
   const handleSearch = (value) => {
     setSearch(value);
@@ -36,10 +39,22 @@ const useTablePosts = () => {
     setFilteredData(data?.data);
   }, [data?.data]);
 
+  const handleDeletePost = () => {
+    mutationDelete.mutate(postData?.id);
+    handleSetPostData({});
+    return handleToogle("delete");
+  };
+
   return {
     query: { data, isLoading },
-    states: { toogle, postId, filteredData, search },
-    handles: { handleToogle, handleSetPost, handleSearch },
+    states: { toogle, postId, filteredData, search, postData },
+    handles: {
+      handleToogle,
+      handleSetPost,
+      handleSearch,
+      handleSetPostData,
+      handleDeletePost,
+    },
   };
 };
 

@@ -25,7 +25,7 @@ axiosInstance.interceptors.response.use(
 
       window.location.href = "/auth";
     } else {
-      message.error(error.message);
+      message.error(error.response?.data.message);
     }
 
     return Promise.reject(error);

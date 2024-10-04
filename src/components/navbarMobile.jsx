@@ -6,7 +6,7 @@ import Icon, {
   LogoutOutlined,
   // HomeOutlined,
   UserOutlined,
-  ExclamationCircleOutlined,
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, Button, Image } from "antd";
@@ -123,7 +123,7 @@ const NavbarMobile = () => {
         footer={[]}
       >
         <div className="flex justify-center items-center gap-4 flex-col">
-          <ExclamationCircleOutlined className="text-4xl text-yellow-500" />
+          <QuestionCircleOutlined className="text-4xl text-yellow-500" />
 
           <p className="text-lg">Do you want to logout ?</p>
 

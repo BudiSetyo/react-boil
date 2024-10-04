@@ -1,58 +1,24 @@
 import PropTypes from "prop-types";
-import { Form, Input, Button, Drawer, Upload } from "antd";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Drawer } from "antd";
 import useDrawer from "../hooks/useDrawer";
+import { UploadImage } from "@/components";
 
 const DrawerPost = ({ open, onClose }) => {
   const { states, handles } = useDrawer(onClose);
 
-  const uploadButton = (
-    <button
-      style={{
-        border: 0,
-        background: "none",
-      }}
-      type="button"
-    >
-      {states.loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </button>
-  );
-
   return (
     <Drawer title="Create Post" open={open} onClose={onClose} width={420}>
-      <div className="my-6 w-full flex justify-center">
-        <Upload
-          name="image"
-          listType="picture-card"
-          className="post-uploader"
-          showUploadList={false}
-          beforeUpload={handles.beforeUpload}
-          onChange={handles.handleChange}
-          action={import.meta.env.VITE_API_URL + "/posts/image"}
-          headers={{ authorization: "Bearer " + localStorage.getItem("token") }}
-        >
-          {states.imageUrl ? (
-            <img
-              src={states.imageUrl}
-              alt="post"
-              style={{
-                width: "100%",
-              }}
-            />
-          ) : (
-            uploadButton
-          )}
-        </Upload>
-      </div>
+      <UploadImage
+        imageUrl={states.imageUrl}
+        loading={states.loading}
+        onChange={handles.handleChange}
+      />
 
-      <Form layout="vertical" onFinish={handles.onFinish}>
+      <Form
+        layout="vertical"
+        onFinish={handles.onFinish}
+        onChange={handles.handleChange}
+      >
         <Form.Item
           label="Title"
           name="title"
