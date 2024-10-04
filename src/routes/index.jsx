@@ -5,6 +5,7 @@ import Error from "@/pages/error";
 import Posts from "@/pages/posts";
 import Users from "@/pages/users";
 import Auth from "@/pages/auth";
+import StudyCase from "@/pages/studyCase";
 
 import { MainLayout } from "@/components";
 
@@ -22,6 +23,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <Users />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/study",
+    element: (
+      <MainLayout>
+        <StudyCase />
       </MainLayout>
     ),
   },
