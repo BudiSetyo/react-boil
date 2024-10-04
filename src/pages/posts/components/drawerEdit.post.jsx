@@ -1,24 +1,11 @@
 import PropTypes from "prop-types";
-import { Form, Input, Button, Drawer, Upload, Skeleton } from "antd";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Drawer, Skeleton } from "antd";
 import useDrawerEdit from "../hooks/useDrawerEdit";
+import { UploadImage } from "@/components";
 
 const DrawerEditPost = ({ open, onClose, postId }) => {
   const { states, handles } = useDrawerEdit(postId, onClose);
   const { postData } = states;
-
-  const uploadButton = (
-    <button
-      style={{
-        border: 0,
-        background: "none",
-      }}
-      type="button"
-    >
-      {states.loadingImage ? <LoadingOutlined /> : <PlusOutlined />}
-      <div className="mt-8">Upload</div>
-    </button>
-  );
 
   return (
     <Drawer
@@ -32,32 +19,11 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
         <Skeleton />
       ) : (
         <section>
-          <div className="my-6 w-full flex justify-center">
-            <Upload
-              name="image"
-              listType="picture-card"
-              className="post-uploader"
-              showUploadList={false}
-              beforeUpload={handles.beforeUpload}
-              onChange={handles.handleChange}
-              action={import.meta.env.VITE_API_URL + "/posts/image"}
-              headers={{
-                authorization: "Bearer " + localStorage.getItem("token"),
-              }}
-            >
-              {states.imageUrl ? (
-                <img
-                  src={states.imageUrl}
-                  alt="post"
-                  style={{
-                    width: "100%",
-                  }}
-                />
-              ) : (
-                uploadButton
-              )}
-            </Upload>
-          </div>
+          <UploadImage
+            loading={states.loadingImage}
+            imageUrl={states.imageUrl}
+            onChange={handles.handleChange}
+          />
 
           <Form layout="vertical" onFinish={handles.onFinish}>
             <Form.Item

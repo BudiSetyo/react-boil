@@ -5,11 +5,6 @@ export const getUsers = async () => {
   return response.data;
 };
 
-// export const getUser = async (userId) => {
-//   const response = await axiosInstance.get(`/users/${userId}`);
-//   return response.data;
-// };
-
 export const createUser = async (data) => {
   const response = await axiosInstance.post(`/users/`, data);
   return response.data;
@@ -29,6 +24,12 @@ export const editPassword = async (data) => {
       ...data.data,
     }
   );
+
+  return response.data;
+};
+
+export const deleteUser = async (id) => {
+  const response = await axiosInstance.delete(`/users/${id}`);
 
   return response.data;
 };

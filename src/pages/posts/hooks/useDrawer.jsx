@@ -8,24 +8,13 @@ const useDrawer = (onClose) => {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
 
-  const getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader.result));
-    reader.readAsDataURL(img);
-  };
-  const beforeUpload = (file) => {
-    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-    if (!isJpgOrPng) {
-      message.error("You can only upload JPG/PNG file!");
-    }
-    const isLt2M = file.size / 720 / 720 < 1;
-    if (!isLt2M) {
-      message.error("Image must smaller than 700Kb!");
-    }
-    return isJpgOrPng && isLt2M;
-  };
-
   const handleChange = (info) => {
+    const getBase64 = (img, callback) => {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => callback(reader.result));
+      reader.readAsDataURL(img);
+    };
+
     if (info.file.status === "uploading") {
       setLoading(true);
     }
@@ -58,7 +47,7 @@ const useDrawer = (onClose) => {
 
   return {
     states: { loading, imageUrl },
-    handles: { onFinish, beforeUpload, handleChange },
+    handles: { onFinish, handleChange },
   };
 };
 
