@@ -1,32 +1,31 @@
 import axios from "axios";
 import { message } from "antd";
 
-const token = localStorage.getItem("token");
-
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
-    Authorization: "Bearer " + token,
+    Authorization: "Bearer " + localStorage.getItem("token"),
     "Content-Type": "application/json",
   },
   timeout: 50000, // 50 seconds
 });
 
-axiosInstance.interceptors.response.use(
+axios.interceptors.request.use(
   (response) => {
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
-      message.warning("401 Unauthorized. Redirecting to login.");
+    if (error.status === 401) {
+      message.warning("Your session is expired please relogin!!");
 
-      localStorage.removeItem("token");
-      localStorage.removeItem("state");
+      setTimeout(() => {
+        localStorage.clear();
 
-      window.location.href = "/auth";
-    } else {
-      message.error(error.response?.data.message);
+        return (window.location.href = "/auth");
+      }, 1000);
     }
+
+    message.error(error.response?.data.message);
 
     return Promise.reject(error);
   }

@@ -29,7 +29,7 @@ const NavbarMobile = () => {
 
   const handleMenu = (dest) => {
     setToggle(!toggle);
-    navigate(`/${dest == "posts" ? "" : dest}`);
+    return navigate(`/${dest == "posts" ? "" : dest}`);
   };
 
   const handleLogout = () => {
@@ -75,11 +75,11 @@ const NavbarMobile = () => {
                 <button
                   key={index}
                   className={`${
-                    currentPage === "/" + menu.name
+                    currentPage === "/" + menu?.name
                       ? "bg-gray-500 text-white"
                       : "bg-gray-200"
                   } hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-full border border-gray-300`}
-                  onClick={() => handleMenu(menu.name)}
+                  onClick={() => handleMenu(menu?.name)}
                 >
                   <span className="text-gray-400">
                     <Icon component={menu.icon} />

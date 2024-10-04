@@ -4,16 +4,13 @@ import { createContext, useState, useEffect } from "react";
 const StateContext = createContext();
 
 const StateProvider = ({ children }) => {
-  const [state, setState] = useState({
-    auth: {},
-  });
+  const initialState = {};
 
-  useEffect(() => {
+  const [state, setState] = useState(() => {
+    // Try to load the initial state from localStorage
     const storedState = localStorage.getItem("state");
-    if (storedState) {
-      setState(JSON.parse(storedState));
-    }
-  }, []);
+    return storedState ? JSON.parse(storedState) : initialState;
+  });
 
   useEffect(() => {
     localStorage.setItem("state", JSON.stringify(state));

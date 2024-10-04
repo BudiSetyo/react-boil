@@ -1,7 +1,13 @@
 import axiosInstance from "@/utils/axios.instance";
 
 export const getUsers = async () => {
-  const response = await axiosInstance.get("/users");
+  const response = await axiosInstance({
+    method: "get",
+    url: "/users",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
   return response.data;
 };
 
