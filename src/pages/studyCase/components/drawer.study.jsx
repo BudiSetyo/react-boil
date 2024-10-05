@@ -6,7 +6,6 @@ import { UploadImage } from "@/components";
 
 const DrawerStudy = ({ open, onClose }) => {
   const { states, handles } = useDrawer(onClose);
-  console.log(states.steps);
 
   return (
     <Drawer title="Create Study Case" open={open} onClose={onClose} width={420}>
@@ -16,11 +15,7 @@ const DrawerStudy = ({ open, onClose }) => {
         onChange={handles.handleChange}
       />
 
-      <Form
-        layout="vertical"
-        onFinish={handles.onFinish}
-        onChange={handles.handleChange}
-      >
+      <Form layout="vertical" onFinish={handles.onFinish}>
         <Form.Item
           label="Title"
           name="title"
@@ -77,12 +72,20 @@ const DrawerStudy = ({ open, onClose }) => {
           <h1>Steps</h1>
 
           <div className="flex flex-col gap-4">
-            {states.steps.map((item, index) => {
-              return <Input.TextArea key={index} />;
+            {states.steps.map((_, index) => {
+              return (
+                <Input.TextArea
+                  key={index}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    handles.handleEditStep(index, e.target.value);
+                  }}
+                />
+              );
             })}
           </div>
 
-          <div className="flex justify-end mt-4">
+          <div className="flex mt-2">
             <div className="flex gap-4">
               <Button
                 className="text-xl"
@@ -103,6 +106,43 @@ const DrawerStudy = ({ open, onClose }) => {
                 shape="circle"
                 size="large"
                 onClick={handles.handleDeleteStep}
+              >
+                <DeleteOutlined />
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2 mt-6">
+          <h1>Results</h1>
+
+          <div className="flex flex-col gap-4">
+            {states.results.map((_, index) => {
+              return <Input.TextArea key={index} />;
+            })}
+          </div>
+
+          <div className="flex mt-2">
+            <div className="flex gap-4">
+              <Button
+                className="text-xl"
+                type="primary"
+                ghost
+                shape="circle"
+                size="large"
+                onClick={handles.handleAddResult}
+              >
+                <DiffOutlined />
+              </Button>
+
+              <Button
+                className="text-xl"
+                type="primary"
+                danger
+                ghost
+                shape="circle"
+                size="large"
+                onClick={handles.handleDeleteResult}
               >
                 <DeleteOutlined />
               </Button>

@@ -7,8 +7,16 @@ const useDrawer = (onClose) => {
 
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
-  const [steps, setSteps] = useState([]);
-  const [results, setResults] = useState([]);
+  const [steps, setSteps] = useState([
+    {
+      description: "",
+    },
+  ]);
+  const [results, setResults] = useState([
+    {
+      description: "",
+    },
+  ]);
 
   const handleChange = (info) => {
     const getBase64 = (img, callback) => {
@@ -48,10 +56,26 @@ const useDrawer = (onClose) => {
   };
 
   const handleAddStep = () => setSteps([...steps, { description: "" }]);
+
   const handleDeleteStep = () =>
     setSteps(steps.filter((_, index) => index !== steps.length - 1));
 
+  const handleEditStep = (order, value) => {
+    const newSteps = steps.map((item, index) => {
+      if (order === index) {
+        return { ...item, description: value };
+      }
+
+      return item;
+    });
+
+    return setSteps(newSteps);
+  };
+
   const handleAddResult = () => setResults([...results, { description: "" }]);
+
+  const handleDeleteResult = () =>
+    setResults(results.filter((_, index) => index !== results.length - 1));
 
   return {
     states: { loading, imageUrl, steps, results },
@@ -61,6 +85,8 @@ const useDrawer = (onClose) => {
       handleAddStep,
       handleAddResult,
       handleDeleteStep,
+      handleDeleteResult,
+      handleEditStep,
     },
   };
 };
