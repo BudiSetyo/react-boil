@@ -18,10 +18,10 @@ axios.interceptors.request.use(
     if (error.status === 401) {
       message.warning("Your session is expired please relogin!!");
 
-      setTimeout(() => {
-        localStorage.clear();
+      localStorage.clear();
 
-        return (window.location.href = "/auth");
+      setTimeout(() => {
+        window.location.href = "/auth";
       }, 1000);
     }
 

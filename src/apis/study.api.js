@@ -21,3 +21,9 @@ export const editStudy = async (data) => {
   });
   return response.data;
 };
+
+export const deleteStudy = async (id) => {
+  const response = await axiosInstance.delete(`/study-case/${id}`);
+
+  return response.data;
+};

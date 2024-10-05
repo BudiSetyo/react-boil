@@ -42,23 +42,23 @@ const DrawerPost = ({ open, onClose }) => {
             },
           ]}
         >
-          <Input.TextArea rows={4} />
+          <Input.TextArea rows={5} />
         </Form.Item>
 
         <Form.Item label="Paragraph 2" name="paragraph_2">
-          <Input.TextArea rows={4} />
+          <Input.TextArea rows={5} />
         </Form.Item>
 
         <Form.Item label="Paragraph 3" name="paragraph_3">
-          <Input.TextArea rows={4} />
+          <Input.TextArea rows={5} />
         </Form.Item>
 
         <Form.Item label="Paragraph 4" name="paragraph_4">
-          <Input.TextArea rows={4} />
+          <Input.TextArea rows={5} />
         </Form.Item>
 
         <Form.Item label="Paragraph 5" name="paragraph_5">
-          <Input.TextArea rows={4} />
+          <Input.TextArea rows={5} />
         </Form.Item>
 
         <Form.Item>

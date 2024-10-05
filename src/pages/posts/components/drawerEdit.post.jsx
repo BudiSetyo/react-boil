@@ -51,7 +51,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
               ]}
               initialValue={postData.paragraph ? postData.paragraph[0] : ""}
             >
-              <Input.TextArea rows={4} />
+              <Input.TextArea rows={5} />
             </Form.Item>
 
             <Form.Item
@@ -59,7 +59,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
               name="paragraph_2"
               initialValue={postData.paragraph ? postData.paragraph[1] : ""}
             >
-              <Input.TextArea rows={4} />
+              <Input.TextArea rows={5} />
             </Form.Item>
 
             <Form.Item
@@ -67,7 +67,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
               name="paragraph_3"
               initialValue={postData.paragraph ? postData.paragraph[2] : ""}
             >
-              <Input.TextArea rows={4} />
+              <Input.TextArea rows={5} />
             </Form.Item>
 
             <Form.Item
@@ -75,7 +75,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
               name="paragraph_4"
               initialValue={postData.paragraph ? postData.paragraph[3] : ""}
             >
-              <Input.TextArea rows={4} />
+              <Input.TextArea rows={5} />
             </Form.Item>
 
             <Form.Item
@@ -83,7 +83,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
               name="paragraph_5"
               initialValue={postData.paragraph ? postData.paragraph[4] : ""}
             >
-              <Input.TextArea rows={4} />
+              <Input.TextArea rows={5} />
             </Form.Item>
 
             <Form.Item>

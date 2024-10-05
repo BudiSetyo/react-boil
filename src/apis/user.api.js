@@ -8,6 +8,7 @@ export const getUsers = async () => {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
   });
+
   return response.data;
 };
 

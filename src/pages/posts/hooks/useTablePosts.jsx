@@ -19,6 +19,7 @@ const useTablePosts = () => {
   };
 
   const handleSetPost = (postId) => setPostId(postId);
+
   const handleSetPostData = (data) => setPostData(data);
 
   const handleSearch = (value) => {
@@ -35,15 +36,15 @@ const useTablePosts = () => {
     return setFilteredData(dataFilter);
   };
 
-  useEffect(() => {
-    setFilteredData(data?.data);
-  }, [data?.data]);
-
   const handleDeletePost = () => {
     mutationDelete.mutate(postData?.id);
     handleSetPostData({});
     return handleToogle("delete");
   };
+
+  useEffect(() => {
+    setFilteredData(data?.data);
+  }, [data?.data]);
 
   return {
     query: { data, isLoading },
