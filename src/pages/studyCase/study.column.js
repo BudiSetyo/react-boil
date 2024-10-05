@@ -8,9 +8,21 @@ export const studyColumn = [
     width: 100,
   },
   {
-    title: "Description",
-    dataIndex: "paragraph",
-    key: "paragraph",
+    title: "Company",
+    dataIndex: "company",
+    key: "company",
+    width: 100,
+  },
+  {
+    title: "Objective",
+    dataIndex: "objective",
+    key: "objective",
+    width: 200,
+  },
+  {
+    title: "Challenge",
+    dataIndex: "challenge",
+    key: "challenge",
     width: 200,
   },
   {
