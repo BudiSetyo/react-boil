@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import DrawerStudy from "./drawer.study";
 import { ModalPermission } from "@/components";
+import DrawerEditStudy from "./drawerEdit.study";
 
 const TableStudy = () => {
   const { states, handles, query } = useTableStudy();
@@ -88,6 +89,12 @@ const TableStudy = () => {
       <DrawerStudy
         open={states.toogle.drawer}
         onClose={() => handles.handleToogle("drawer")}
+      />
+
+      <DrawerEditStudy
+        open={states.toogle.edit}
+        onClose={() => handles.handleToogle("edit")}
+        studyId={states.studyData.id}
       />
 
       <ModalPermission

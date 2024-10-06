@@ -39,7 +39,23 @@ const useDrawerEdit = (studyId, onClose) => {
   };
 
   const onFinish = (values) => {
-    const newValues = { ...values, image: imageUrl };
+    if (!imageUrl) {
+      return message.error("Study case image is required!");
+    }
+
+    const newValues = {
+      ...values,
+      image: imageUrl,
+      steps: values.steps.map((item, index) => ({
+        order: index + 1,
+        description: item.description,
+      })),
+      results: values.results.map((item, index) => ({
+        order: index + 1,
+        description: item.description,
+      })),
+    };
+
     mutationEdit.mutate({ id: studyId, data: newValues });
 
     return onClose();
