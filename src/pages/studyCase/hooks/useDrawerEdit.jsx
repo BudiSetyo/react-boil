@@ -1,10 +1,10 @@
 import { message } from "antd";
 import { useState, useEffect } from "react";
-import { getPost } from "@/apis/post.api";
-import { usePosts } from "@/query/post.query";
+import { getStudy } from "@/apis/study.api";
+import { useStudy } from "@/query/study.query";
 
-const useDrawerEdit = (postId, onClose) => {
-  const { mutationEdit } = usePosts();
+const useDrawerEdit = (studyId, onClose) => {
+  const { mutationEdit } = useStudy();
 
   const [loading, setLoading] = useState(false);
   const [loadingImage, setLoadingImage] = useState(false);
@@ -40,15 +40,15 @@ const useDrawerEdit = (postId, onClose) => {
 
   const onFinish = (values) => {
     const newValues = { ...values, image: imageUrl };
-    mutationEdit.mutate({ id: postId, data: newValues });
+    mutationEdit.mutate({ id: studyId, data: newValues });
 
     return onClose();
   };
 
   useEffect(() => {
-    if (postId) {
+    if (studyId) {
       setLoading(true);
-      getPost(postId)
+      getStudy(studyId)
         .then((res) => {
           setLoading(false);
           setStudyData(res.data);
@@ -57,11 +57,11 @@ const useDrawerEdit = (postId, onClose) => {
         .catch((err) => {
           setLoading(false);
           message.error(
-            err.response?.data.message || "Failed fetch post " + postId
+            err.response?.data.message || "Failed fetch post " + studyId
           );
         });
     }
-  }, [postId, studyData.image]);
+  }, [studyId, studyData.image]);
 
   return {
     states: { loading, imageUrl, studyData, loadingImage },

@@ -8,7 +8,7 @@ import {
 import useDrawer from "../hooks/useDrawer";
 import { UploadImage } from "@/components";
 
-const DrawerStudy = ({ open, onClose }) => {
+const DrawerEditStudy = ({ open, onClose }) => {
   const { states, handles } = useDrawer(onClose);
 
   return (
@@ -214,10 +214,10 @@ const DrawerStudy = ({ open, onClose }) => {
   );
 };
 
-DrawerStudy.propTypes = {
+DrawerEditStudy.propTypes = {
   imgUrl: PropTypes.any,
   onClose: PropTypes.any,
   open: PropTypes.any,
 };
 
-export default DrawerStudy;
+export default DrawerEditStudy;

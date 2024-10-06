@@ -1,14 +1,7 @@
 import axiosInstance from "@/utils/axios.instance";
 
 export const getUsers = async () => {
-  const response = await axiosInstance({
-    method: "get",
-    url: "/users",
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
-
+  const response = await axiosInstance.get("/users");
   return response.data;
 };
 
@@ -31,12 +24,10 @@ export const editPassword = async (data) => {
       ...data.data,
     }
   );
-
   return response.data;
 };
 
 export const deleteUser = async (id) => {
   const response = await axiosInstance.delete(`/users/${id}`);
-
   return response.data;
 };

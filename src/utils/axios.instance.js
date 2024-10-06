@@ -10,22 +10,34 @@ const axiosInstance = axios.create({
   timeout: 50000, // 50 seconds
 });
 
-axios.interceptors.request.use(
+axios.interceptors.request.use((config) => {
+  const newConfig = {
+    ...config,
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  };
+
+  return newConfig;
+});
+
+axiosInstance.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
-    if (error.status === 401) {
-      message.warning("Your session is expired please relogin!!");
-
+    if (
+      error.response.status === 401 &&
+      error.response?.data.message !== "Unauthorized"
+    ) {
       localStorage.clear();
 
-      setTimeout(() => {
-        window.location.href = "/auth";
-      }, 1000);
-    }
+      message.warning("Your session is expired please relogin!!");
 
-    message.error(error.response?.data.message);
+      setTimeout(() => (window.location.href = "/auth"), 1000);
+    } else {
+      message.error(error.response?.data.message);
+    }
 
     return Promise.reject(error);
   }

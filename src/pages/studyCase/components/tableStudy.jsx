@@ -7,6 +7,7 @@ import {
   PlusCircleOutlined,
 } from "@ant-design/icons";
 import DrawerStudy from "./drawer.study";
+import { ModalPermission } from "@/components";
 
 const TableStudy = () => {
   const { states, handles, query } = useTableStudy();
@@ -87,6 +88,20 @@ const TableStudy = () => {
       <DrawerStudy
         open={states.toogle.drawer}
         onClose={() => handles.handleToogle("drawer")}
+      />
+
+      <ModalPermission
+        open={states.toogle.delete}
+        onCancel={() => handles.handleToogle("delete")}
+        onConfirm={handles.handleDeleteStudy}
+        content={
+          <div>
+            <p>
+              Are you sure you want to delete this study case? <br />
+              <span className="text-blue-500">{states.studyData.title}</span>
+            </p>
+          </div>
+        }
       />
     </div>
   );
