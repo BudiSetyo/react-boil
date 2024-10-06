@@ -7,6 +7,7 @@ import Icon, {
   BookOutlined,
   UserOutlined,
   QuestionCircleOutlined,
+  ClusterOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, Button, Image } from "antd";
@@ -24,6 +25,7 @@ const NavbarMobile = () => {
   const menuData = [
     { name: "posts", icon: FileAddOutlined },
     { name: "study", icon: BookOutlined },
+    { name: "services", icon: ClusterOutlined },
     { name: "users", icon: UserOutlined },
   ];
 

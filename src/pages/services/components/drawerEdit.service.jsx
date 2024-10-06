@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { Form, Input, Button, Drawer } from "antd";
-import useDrawer from "../hooks/useDrawer";
 import { UploadImage } from "@/components";
+import useDrawerEdit from "../hooks/useDrawerEdit";
 
-const DrawerPost = ({ open, onClose }) => {
-  const { states, handles } = useDrawer(onClose);
+const DrawerEditService = ({ open, onClose, serviceData }) => {
+  const { states, handles } = useDrawerEdit(serviceData, onClose);
 
   return (
-    <Drawer title="Create Post" open={open} onClose={onClose} width={420}>
+    <Drawer title="Edit Service" open={open} onClose={onClose} width={420}>
       <UploadImage
         imageUrl={states.imageUrl}
         loading={states.loading}
@@ -16,12 +16,13 @@ const DrawerPost = ({ open, onClose }) => {
 
       <Form layout="vertical" onFinish={handles.onFinish}>
         <Form.Item
-          label="Title"
-          name="title"
+          label="Name"
+          name="name"
+          initialValue={serviceData.name}
           rules={[
             {
               required: true,
-              message: "Please input your title!",
+              message: "Please input your name!",
             },
           ]}
         >
@@ -29,31 +30,16 @@ const DrawerPost = ({ open, onClose }) => {
         </Form.Item>
 
         <Form.Item
-          label="Paragraph 1"
-          name="paragraph_1"
+          label="Description"
+          name="description"
+          initialValue={serviceData.description}
           rules={[
             {
               required: true,
-              message: "Please input your paragraph 1!",
+              message: "Please input your description!",
             },
           ]}
         >
-          <Input.TextArea rows={5} />
-        </Form.Item>
-
-        <Form.Item label="Paragraph 2" name="paragraph_2">
-          <Input.TextArea rows={5} />
-        </Form.Item>
-
-        <Form.Item label="Paragraph 3" name="paragraph_3">
-          <Input.TextArea rows={5} />
-        </Form.Item>
-
-        <Form.Item label="Paragraph 4" name="paragraph_4">
-          <Input.TextArea rows={5} />
-        </Form.Item>
-
-        <Form.Item label="Paragraph 5" name="paragraph_5">
           <Input.TextArea rows={5} />
         </Form.Item>
 
@@ -69,10 +55,10 @@ const DrawerPost = ({ open, onClose }) => {
   );
 };
 
-DrawerPost.propTypes = {
-  imgUrl: PropTypes.any,
+DrawerEditService.propTypes = {
   onClose: PropTypes.any,
   open: PropTypes.any,
+  serviceData: PropTypes.any,
 };
 
-export default DrawerPost;
+export default DrawerEditService;

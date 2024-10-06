@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Error from "@/pages/error";
-// import Home from "@/pages/home";
 import Posts from "@/pages/posts";
 import Users from "@/pages/users";
 import Auth from "@/pages/auth";
 import StudyCase from "@/pages/studyCase";
+import Services from "@/pages/services";
 
 import { MainLayout } from "@/components";
 
@@ -31,6 +31,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <StudyCase />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/services",
+    element: (
+      <MainLayout>
+        <Services />
       </MainLayout>
     ),
   },
