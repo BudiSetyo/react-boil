@@ -9,3 +9,6 @@ export const STUDY_QUERY_KEY = "STUDY_CASE";
 
 // Services
 export const SERVICES_QUERY_KEY = "SERVICES";
+
+// Teams
+export const TEAMS_QUERY_KEY = "TEAMS";

@@ -6,6 +6,7 @@ import Users from "@/pages/users";
 import Auth from "@/pages/auth";
 import StudyCase from "@/pages/studyCase";
 import Services from "@/pages/services";
+import Teams from "@/pages/teams";
 
 import { MainLayout } from "@/components";
 
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <Services />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/teams",
+    element: (
+      <MainLayout>
+        <Teams />
       </MainLayout>
     ),
   },

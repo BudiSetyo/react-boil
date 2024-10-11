@@ -8,6 +8,7 @@ import Icon, {
   UserOutlined,
   QuestionCircleOutlined,
   ClusterOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, Button, Image } from "antd";
@@ -26,6 +27,7 @@ const NavbarMobile = () => {
     { name: "posts", icon: FileAddOutlined },
     { name: "study", icon: BookOutlined },
     { name: "services", icon: ClusterOutlined },
+    { name: "teams", icon: TeamOutlined },
     { name: "users", icon: UserOutlined },
   ];
 
