@@ -12,73 +12,80 @@ import Testimonies from "@/pages/testimony";
 
 import { MainLayout } from "@/components";
 
+// Update the router to use "/cms" as the base path
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: (
-      <MainLayout>
-        <Posts />
-      </MainLayout>
-    ),
+    path: "/cms", // Base path for all routes
+    children: [
+      {
+        path: "", // This will match "/cms"
+        element: (
+          <MainLayout>
+            <Posts />
+          </MainLayout>
+        ),
+      },
+      {
+        path: "users", // This will match "/cms/users"
+        element: (
+          <MainLayout>
+            <Users />
+          </MainLayout>
+        ),
+      },
+      {
+        path: "study", // This will match "/cms/study"
+        element: (
+          <MainLayout>
+            <StudyCase />
+          </MainLayout>
+        ),
+      },
+      {
+        path: "services", // This will match "/cms/services"
+        element: (
+          <MainLayout>
+            <Services />
+          </MainLayout>
+        ),
+      },
+      {
+        path: "teams", // This will match "/cms/teams"
+        element: (
+          <MainLayout>
+            <Teams />
+          </MainLayout>
+        ),
+      },
+      {
+        path: "clients", // This will match "/cms/clients"
+        element: (
+          <MainLayout>
+            <Clients />
+          </MainLayout>
+        ),
+      },
+      {
+        path: "testimonies", // This will match "/cms/testimonies"
+        element: (
+          <MainLayout>
+            <Testimonies />
+          </MainLayout>
+        ),
+      },
+
+      {
+        path: "*", // Catch-all route for 404
+        element: <Error errorCode={404} />,
+      },
+    ],
   },
   {
-    path: "/users",
-    element: (
-      <MainLayout>
-        <Users />
-      </MainLayout>
-    ),
-  },
-  {
-    path: "/study",
-    element: (
-      <MainLayout>
-        <StudyCase />
-      </MainLayout>
-    ),
-  },
-  {
-    path: "/services",
-    element: (
-      <MainLayout>
-        <Services />
-      </MainLayout>
-    ),
-  },
-  {
-    path: "/teams",
-    element: (
-      <MainLayout>
-        <Teams />
-      </MainLayout>
-    ),
-  },
-  {
-    path: "/clients",
-    element: (
-      <MainLayout>
-        <Clients />
-      </MainLayout>
-    ),
-  },
-  {
-    path: "/testimonies",
-    element: (
-      <MainLayout>
-        <Testimonies />
-      </MainLayout>
-    ),
-  },
-  {
-    path: "/auth",
+    path: "/cms/auth", // This will match "/cms/auth"
     element: <Auth />,
   },
   {
-    path: "*",
-    element: <Error errorCode={404} />,
-  },
-  {
-    path: "/server-error",
+    path: "/cms/server-error", // This will match "/cms/server-error"
     element: <Error errorCode={500} />,
   },
 ]);

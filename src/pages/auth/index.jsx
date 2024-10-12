@@ -11,7 +11,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate("/cms/");
     }
   }, [token, navigate]);
 

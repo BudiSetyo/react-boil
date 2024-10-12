@@ -37,24 +37,26 @@ const NavbarMobile = () => {
 
   const handleMenu = (dest) => {
     setToggle(!toggle);
-    return navigate(`/${dest == "posts" ? "" : dest}`);
+    return navigate(`/cms/${dest == "posts" ? "" : dest}`);
   };
 
   const handleLogout = () => {
     setModalLogout(!modalLogout);
-    navigate("/auth");
+    navigate("/cms/auth");
     localStorage.removeItem("state");
     localStorage.removeItem("token");
     return;
   };
 
   useEffect(() => {
-    setCurrentPage(location.pathname === "/" ? "/posts" : location.pathname);
+    setCurrentPage(
+      location.pathname === "/cms/" ? "/cms/posts" : location.pathname
+    );
   }, [location.pathname]);
 
   useEffect(() => {
     if (!token) {
-      navigate("/auth");
+      navigate("/cms/auth");
     }
   }, [token, navigate]);
 
@@ -83,7 +85,7 @@ const NavbarMobile = () => {
                 <button
                   key={index}
                   className={`${
-                    currentPage === "/" + menu?.name
+                    currentPage === "/cms/" + menu?.name
                       ? "bg-gray-500 text-white"
                       : "bg-gray-200"
                   } hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-xl border border-gray-300`}
@@ -91,7 +93,7 @@ const NavbarMobile = () => {
                 >
                   <span
                     className={`${
-                      currentPage === "/" + menu?.name
+                      currentPage === "/cms/" + menu?.name
                         ? "text-white"
                         : "text-gray-500"
                     }`}
