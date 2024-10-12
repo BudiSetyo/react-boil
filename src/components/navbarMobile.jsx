@@ -9,6 +9,8 @@ import Icon, {
   QuestionCircleOutlined,
   ClusterOutlined,
   TeamOutlined,
+  ApartmentOutlined,
+  CommentOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, Button, Image } from "antd";
@@ -27,6 +29,8 @@ const NavbarMobile = () => {
     { name: "posts", icon: FileAddOutlined },
     { name: "study", icon: BookOutlined },
     { name: "services", icon: ClusterOutlined },
+    { name: "clients", icon: ApartmentOutlined },
+    { name: "testimonies", icon: CommentOutlined },
     { name: "teams", icon: TeamOutlined },
     { name: "users", icon: UserOutlined },
   ];
@@ -68,8 +72,8 @@ const NavbarMobile = () => {
       </div>
 
       <div
-        className={`relative flex -left-full duration-300 ${
-          toggle ? "translate-x-full" : ""
+        className={`relative flex -left-[2000px] duration-300 ${
+          toggle ? "translate-x-[2000px]" : ""
         }`}
       >
         <div className="absolute h-screen bg-gray-100 w-full md:w-1/2 flex flex-col justify-between font-semibold text-gray-700 px-2 pt-16 pb-4">
@@ -82,10 +86,16 @@ const NavbarMobile = () => {
                     currentPage === "/" + menu?.name
                       ? "bg-gray-500 text-white"
                       : "bg-gray-200"
-                  } hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-full border border-gray-300`}
+                  } hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-xl border border-gray-300`}
                   onClick={() => handleMenu(menu?.name)}
                 >
-                  <span className="text-gray-400">
+                  <span
+                    className={`${
+                      currentPage === "/" + menu?.name
+                        ? "text-white"
+                        : "text-gray-500"
+                    }`}
+                  >
                     <Icon component={menu.icon} />
                   </span>
                   <p className="capitalize">
@@ -96,7 +106,7 @@ const NavbarMobile = () => {
             })}
           </div>
           <button
-            className="bg-gray-200 hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-full border border-gray-300"
+            className="bg-gray-200 hover:bg-gray-500 hover:text-white w-full text-start flex gap-4 items-center text-xl px-6 py-2 rounded-xl border border-gray-300"
             onClick={() => setModalLogout(!modalLogout)}
           >
             <span className="text-gray-400">

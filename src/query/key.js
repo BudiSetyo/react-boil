@@ -12,3 +12,9 @@ export const SERVICES_QUERY_KEY = "SERVICES";
 
 // Teams
 export const TEAMS_QUERY_KEY = "TEAMS";
+
+// Clients
+export const CLIENTS_QUERY_KEY = "CLIENTS";
+
+// Testimonies
+export const TESTIMONIES_QUERY_KEY = "TESTIMONIES";
