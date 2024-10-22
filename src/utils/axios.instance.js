@@ -1,5 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -34,7 +35,7 @@ axiosInstance.interceptors.response.use(
 
       message.warning("Your session is expired please relogin!!");
 
-      setTimeout(() => (window.location.href = "/auth"), 1000);
+      setTimeout(() => (window.location.href = `${baseUrl}/auth`), 1000);
     } else {
       message.error(error.response?.data.message);
     }

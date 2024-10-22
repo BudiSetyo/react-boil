@@ -4,7 +4,12 @@ import { createContext, useState, useEffect } from "react";
 const StateContext = createContext();
 
 const StateProvider = ({ children }) => {
-  const initialState = {};
+  const initialState = {
+    auth: {},
+    toggle: {
+      sidebar: false,
+    },
+  };
 
   const [state, setState] = useState(() => {
     // Try to load the initial state from localStorage

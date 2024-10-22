@@ -4,8 +4,9 @@ import { FileAddOutlined } from "@ant-design/icons";
 
 const Posts = () => {
   return (
-    <main className="p-4 flex flex-col gap-4">
+    <main className="flex flex-col gap-4">
       <PageTitle title="Posts" icon={<FileAddOutlined />} />
+      <TablePost />
       <TablePost />
     </main>
   );

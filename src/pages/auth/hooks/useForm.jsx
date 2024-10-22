@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
-import { StateContext } from "@/context/state.context";
+import { useState } from "react";
 import { login } from "@/apis/auth.api";
 import { message } from "antd";
+import useGlobalHooks from "@/hooks";
 
 const useForm = () => {
-  const { state, setState } = useContext(StateContext);
+  const { handlers } = useGlobalHooks();
 
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +14,7 @@ const useForm = () => {
     login(values.email, values.password)
       .then((res) => {
         setLoading(false);
-        setState({ ...state, auth: res.data });
+        handlers.handleAuth(res.data);
         const token = res.data?.token;
 
         localStorage.setItem("token", token);
