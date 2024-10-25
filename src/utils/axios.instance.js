@@ -37,7 +37,7 @@ axiosInstance.interceptors.response.use(
 
       setTimeout(() => (window.location.href = `${baseUrl}/auth`), 1000);
     } else {
-      message.error(error.response?.data.message);
+      message.error(error.response?.data.message || error.message);
     }
 
     return Promise.reject(error);

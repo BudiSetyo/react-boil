@@ -14,7 +14,7 @@ const useForm = () => {
     login(values.email, values.password)
       .then((res) => {
         setLoading(false);
-        handlers.handleAuth(res.data);
+        handlers.handleAuth(res?.data);
         const token = res.data?.token;
 
         localStorage.setItem("token", token);
@@ -27,7 +27,7 @@ const useForm = () => {
       .catch((err) => {
         setLoading(false);
 
-        return message.error(err.response.data.message || "Login failed");
+        throw(new Error(err))
       });
   };
 
