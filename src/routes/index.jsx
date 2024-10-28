@@ -6,13 +6,12 @@ import Auth from '@/pages/auth';
 import { baseUrl } from '@/utils';
 import { MainLayout } from '@/components';
 
-// Update the router to use "/cms" as the base path
 const router = createBrowserRouter([
   {
-    path: `/${baseUrl}`, // Base path for all routes
+    path: `/${baseUrl}`,
     children: [
       {
-        path: '', // This will match "/cms"
+        path: '',
         element: (
           <MainLayout>
             <Posts />
@@ -21,17 +20,17 @@ const router = createBrowserRouter([
       },
 
       {
-        path: '*', // Catch-all route for 404
+        path: '*',
         element: <Error errorCode={404} />,
       },
     ],
   },
   {
-    path: `/${baseUrl}/auth`, // This will match "/cms/auth"
+    path: `/${baseUrl}/auth`,
     element: <Auth />,
   },
   {
-    path: `/${baseUrl}/server-error`, // This will match "/cms/server-error"
+    path: `/${baseUrl}/server-error`,
     element: <Error errorCode={500} />,
   },
 ]);
