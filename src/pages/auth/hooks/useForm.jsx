@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { login } from "@/apis/auth.api";
-import { message } from "antd";
-import useGlobalHooks from "@/hooks";
+import { useState } from 'react';
+import { login } from '@/apis/auth.api';
+import { message } from 'antd';
+import useGlobalHooks from '@/hooks';
 
 const useForm = () => {
   const { handlers } = useGlobalHooks();
@@ -17,17 +17,17 @@ const useForm = () => {
         handlers.handleAuth(res?.data);
         const token = res.data?.token;
 
-        localStorage.setItem("token", token);
+        localStorage.setItem('token', token);
 
-        message.success(res.message || "Login success");
+        message.success(res.message || 'Login success');
 
-        setTimeout(() => (window.location.href = "/"), 1000);
+        setTimeout(() => (window.location.href = '/'), 1000);
         return;
       })
       .catch((err) => {
         setLoading(false);
 
-        throw(new Error(err))
+        throw new Error(err);
       });
   };
 

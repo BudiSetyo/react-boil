@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { usePosts } from "@/query/post.query";
+import { useEffect, useState } from 'react';
+import { usePosts } from '@/query/post.query';
 
 const useTablePosts = () => {
   const { data, isLoading, mutationDelete } = usePosts();
@@ -11,7 +11,7 @@ const useTablePosts = () => {
   });
   const [postId, setPostId] = useState();
   const [filteredData, setFilteredData] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [postData, setPostData] = useState({});
 
   const handleToogle = (key) => {
@@ -39,7 +39,7 @@ const useTablePosts = () => {
   const handleDeletePost = () => {
     mutationDelete.mutate(postData?.id);
     handleSetPostData({});
-    return handleToogle("delete");
+    return handleToogle('delete');
   };
 
   useEffect(() => {

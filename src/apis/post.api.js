@@ -1,7 +1,7 @@
-import axiosInstance from "@/utils/axios.instance";
+import axiosInstance from '@/utils/axios.instance';
 
 export const getPosts = async () => {
-  const response = await axiosInstance.get("/posts");
+  const response = await axiosInstance.get('/posts');
   return response.data;
 };
 
@@ -11,7 +11,7 @@ export const getPost = async (postId) => {
 };
 
 export const createPost = async (data) => {
-  const response = await axiosInstance.post("/posts", data);
+  const response = await axiosInstance.post('/posts', data);
   return response.data;
 };
 

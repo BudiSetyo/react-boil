@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { Upload } from "antd";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import useUploadImage from "./hooks/useUploadImage";
+import PropTypes from 'prop-types';
+import { Upload } from 'antd';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import useUploadImage from './hooks/useUploadImage';
 
 const UploadImage = ({ onChange, imageUrl, loading }) => {
   const { handles } = useUploadImage();
@@ -10,7 +10,7 @@ const UploadImage = ({ onChange, imageUrl, loading }) => {
     <button
       style={{
         border: 0,
-        background: "none",
+        background: 'none',
       }}
       type="button"
     >
@@ -34,8 +34,8 @@ const UploadImage = ({ onChange, imageUrl, loading }) => {
         showUploadList={false}
         beforeUpload={handles.beforeUpload}
         onChange={onChange}
-        action={import.meta.env.VITE_API_URL + "/image/auth"}
-        headers={{ authorization: "Bearer " + localStorage.getItem("token") }}
+        action={import.meta.env.VITE_API_URL + '/image/auth'}
+        headers={{ authorization: 'Bearer ' + localStorage.getItem('token') }}
       >
         {loading ? (
           uploadButton
@@ -44,7 +44,7 @@ const UploadImage = ({ onChange, imageUrl, loading }) => {
             src={imageUrl}
             alt="post"
             style={{
-              width: "100%",
+              width: '100%',
             }}
           />
         ) : (

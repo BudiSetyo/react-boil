@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { Navbar, SuspenseLoading, Sidebar } from "@/components";
-import { Suspense } from "react";
+import PropTypes from 'prop-types';
+import { Navbar, SuspenseLoading, Sidebar } from '@/components';
+import { Suspense } from 'react';
 
 const MainLayout = ({ children }) => {
   return (

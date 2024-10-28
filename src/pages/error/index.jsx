@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // Default images for different error codes
-import notFoundImage from "@/assets/404.png";
-import serverErrorImage from "@/assets/500.png"; // Add more images as needed
+import notFoundImage from '@/assets/404.png';
+import serverErrorImage from '@/assets/500.png'; // Add more images as needed
 
 const ErrorPage = ({ errorCode, errorMessage }) => {
   // Select image based on error code
@@ -20,7 +20,7 @@ const ErrorPage = ({ errorCode, errorMessage }) => {
 
   // Define default error message if none is provided
   const defaultMessage =
-    errorMessage || "Sorry, something went wrong. Please try again later.";
+    errorMessage || 'Sorry, something went wrong. Please try again later.';
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">

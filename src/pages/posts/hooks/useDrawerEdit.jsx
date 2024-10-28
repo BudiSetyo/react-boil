@@ -1,7 +1,7 @@
-import { message } from "antd";
-import { useState, useEffect } from "react";
-import { getPost } from "@/apis/post.api";
-import { usePosts } from "@/query/post.query";
+import { message } from 'antd';
+import { useState, useEffect } from 'react';
+import { getPost } from '@/apis/post.api';
+import { usePosts } from '@/query/post.query';
 
 const useDrawerEdit = (postId, onClose) => {
   const { mutationEdit } = usePosts();
@@ -14,15 +14,15 @@ const useDrawerEdit = (postId, onClose) => {
   const handleChange = (info) => {
     const getBase64 = (img, callback) => {
       const reader = new FileReader();
-      reader.addEventListener("load", () => callback(reader.result));
+      reader.addEventListener('load', () => callback(reader.result));
       reader.readAsDataURL(img);
     };
 
-    if (info.file.status === "uploading") {
+    if (info.file.status === 'uploading') {
       setLoadingImage(true);
     }
 
-    if (info.file.status === "done") {
+    if (info.file.status === 'done') {
       // Get this url from response in real world.
       message.success(info.file.response.message);
       getBase64(info.file.originFileObj, () => {
@@ -32,7 +32,7 @@ const useDrawerEdit = (postId, onClose) => {
       });
     }
 
-    if (info.file.status === "error") {
+    if (info.file.status === 'error') {
       setLoadingImage(false);
       return message.error(info.file.response);
     }
@@ -57,7 +57,7 @@ const useDrawerEdit = (postId, onClose) => {
         .catch((err) => {
           setLoading(false);
           message.error(
-            err.response?.data.message || "Failed fetch post " + postId
+            err.response?.data.message || 'Failed fetch post ' + postId
           );
         });
     }

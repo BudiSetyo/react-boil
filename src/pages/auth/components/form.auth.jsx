@@ -1,5 +1,5 @@
-import { Button, Form, Input } from "antd";
-import useForm from "../hooks/useForm";
+import { Button, Form, Input } from 'antd';
+import useForm from '../hooks/useForm';
 
 const FormAuth = () => {
   const { handles, states } = useForm();

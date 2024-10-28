@@ -1,20 +1,20 @@
 // Posts
-export const POSTS_QUERY_KEY = "POSTS";
+export const POSTS_QUERY_KEY = 'POSTS';
 
 // Users
-export const USERS_QUERY_KEY = "USERS";
+export const USERS_QUERY_KEY = 'USERS';
 
 // Study
-export const STUDY_QUERY_KEY = "STUDY_CASE";
+export const STUDY_QUERY_KEY = 'STUDY_CASE';
 
 // Services
-export const SERVICES_QUERY_KEY = "SERVICES";
+export const SERVICES_QUERY_KEY = 'SERVICES';
 
 // Teams
-export const TEAMS_QUERY_KEY = "TEAMS";
+export const TEAMS_QUERY_KEY = 'TEAMS';
 
 // Clients
-export const CLIENTS_QUERY_KEY = "CLIENTS";
+export const CLIENTS_QUERY_KEY = 'CLIENTS';
 
 // Testimonies
-export const TESTIMONIES_QUERY_KEY = "TESTIMONIES";
+export const TESTIMONIES_QUERY_KEY = 'TESTIMONIES';

@@ -1,6 +1,6 @@
-import TablePost from "./components/table.post.jsx";
-import { PageTitle } from "@/components/index.js";
-import { FileAddOutlined } from "@ant-design/icons";
+import TablePost from './components/table.post.jsx';
+import { PageTitle } from '@/components/index.js';
+import { FileAddOutlined } from '@ant-design/icons';
 
 const Posts = () => {
   return (

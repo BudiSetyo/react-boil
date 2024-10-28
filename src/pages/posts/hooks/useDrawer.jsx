@@ -1,6 +1,6 @@
-import { message } from "antd";
-import { useState } from "react";
-import { usePosts } from "@/query/post.query";
+import { message } from 'antd';
+import { useState } from 'react';
+import { usePosts } from '@/query/post.query';
 
 const useDrawer = (onClose) => {
   const { mutationCreate } = usePosts();
@@ -11,15 +11,15 @@ const useDrawer = (onClose) => {
   const handleChange = (info) => {
     const getBase64 = (img, callback) => {
       const reader = new FileReader();
-      reader.addEventListener("load", () => callback(reader.result));
+      reader.addEventListener('load', () => callback(reader.result));
       reader.readAsDataURL(img);
     };
 
-    if (info.file.status === "uploading") {
+    if (info.file.status === 'uploading') {
       setLoading(true);
     }
 
-    if (info.file.status === "done") {
+    if (info.file.status === 'done') {
       // Get this url from response in real world.
       message.success(info.file.response.message);
       getBase64(info.file.originFileObj, () => {
@@ -28,14 +28,14 @@ const useDrawer = (onClose) => {
       });
     }
 
-    if (info.file.status === "error") {
+    if (info.file.status === 'error') {
       return message.error(info.file.response);
     }
   };
 
   const onFinish = (values) => {
     if (!imageUrl) {
-      return message.error("Post image is required!");
+      return message.error('Post image is required!');
     }
     const newValues = { ...values, image: imageUrl };
 

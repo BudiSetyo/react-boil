@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { Form, Input, Button, Drawer } from "antd";
-import useDrawer from "../hooks/useDrawer";
-import { UploadImage } from "@/components";
+import PropTypes from 'prop-types';
+import { Form, Input, Button, Drawer } from 'antd';
+import useDrawer from '../hooks/useDrawer';
+import { UploadImage } from '@/components';
 
 const DrawerPost = ({ open, onClose }) => {
   const { states, handles } = useDrawer(onClose);
@@ -21,7 +21,7 @@ const DrawerPost = ({ open, onClose }) => {
           rules={[
             {
               required: true,
-              message: "Please input your title!",
+              message: 'Please input your title!',
             },
           ]}
         >
@@ -34,7 +34,7 @@ const DrawerPost = ({ open, onClose }) => {
           rules={[
             {
               required: true,
-              message: "Please input your paragraph 1!",
+              message: 'Please input your paragraph 1!',
             },
           ]}
         >

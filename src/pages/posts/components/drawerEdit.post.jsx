@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { Form, Input, Button, Drawer, Skeleton } from "antd";
-import useDrawerEdit from "../hooks/useDrawerEdit";
-import { UploadImage } from "@/components";
+import PropTypes from 'prop-types';
+import { Form, Input, Button, Drawer, Skeleton } from 'antd';
+import useDrawerEdit from '../hooks/useDrawerEdit';
+import { UploadImage } from '@/components';
 
 const DrawerEditPost = ({ open, onClose, postId }) => {
   const { states, handles } = useDrawerEdit(postId, onClose);
@@ -32,10 +32,10 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your title!",
+                  message: 'Please input your title!',
                 },
               ]}
-              initialValue={postData.title ? postData.title : ""}
+              initialValue={postData.title ? postData.title : ''}
             >
               <Input />
             </Form.Item>
@@ -46,10 +46,10 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your paragraph 1!",
+                  message: 'Please input your paragraph 1!',
                 },
               ]}
-              initialValue={postData.paragraph ? postData.paragraph[0] : ""}
+              initialValue={postData.paragraph ? postData.paragraph[0] : ''}
             >
               <Input.TextArea rows={5} />
             </Form.Item>
@@ -57,7 +57,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
             <Form.Item
               label="Paragraph 2"
               name="paragraph_2"
-              initialValue={postData.paragraph ? postData.paragraph[1] : ""}
+              initialValue={postData.paragraph ? postData.paragraph[1] : ''}
             >
               <Input.TextArea rows={5} />
             </Form.Item>
@@ -65,7 +65,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
             <Form.Item
               label="Paragraph 3"
               name="paragraph_3"
-              initialValue={postData.paragraph ? postData.paragraph[2] : ""}
+              initialValue={postData.paragraph ? postData.paragraph[2] : ''}
             >
               <Input.TextArea rows={5} />
             </Form.Item>
@@ -73,7 +73,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
             <Form.Item
               label="Paragraph 4"
               name="paragraph_4"
-              initialValue={postData.paragraph ? postData.paragraph[3] : ""}
+              initialValue={postData.paragraph ? postData.paragraph[3] : ''}
             >
               <Input.TextArea rows={5} />
             </Form.Item>
@@ -81,7 +81,7 @@ const DrawerEditPost = ({ open, onClose, postId }) => {
             <Form.Item
               label="Paragraph 5"
               name="paragraph_5"
-              initialValue={postData.paragraph ? postData.paragraph[4] : ""}
+              initialValue={postData.paragraph ? postData.paragraph[4] : ''}
             >
               <Input.TextArea rows={5} />
             </Form.Item>

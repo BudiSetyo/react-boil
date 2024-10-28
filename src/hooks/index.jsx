@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { StateContext } from "@/context/state.context";
+import { useContext } from 'react';
+import { StateContext } from '@/context/state.context';
 
 const useGlobalHooks = () => {
   const { state, setState } = useContext(StateContext);

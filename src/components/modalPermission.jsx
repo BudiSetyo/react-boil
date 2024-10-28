@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { Modal, Button } from "antd";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import PropTypes from 'prop-types';
+import { Modal, Button } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
 const ModalPermission = ({ open, onCancel, onConfirm, content }) => {
   return (

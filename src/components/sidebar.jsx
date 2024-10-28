@@ -2,20 +2,20 @@ import Icon, {
   FileAddOutlined,
   LogoutOutlined,
   QuestionCircleOutlined,
-} from "@ant-design/icons";
-import { Modal, Button } from "antd";
-import useGlobalHooks from "@/hooks";
+} from '@ant-design/icons';
+import { Modal, Button } from 'antd';
+import useGlobalHooks from '@/hooks';
 
 const Sidebar = () => {
   const { state } = useGlobalHooks();
   const { toggle } = state;
 
-  const menuData = [{ name: "posts", icon: FileAddOutlined }];
+  const menuData = [{ name: 'posts', icon: FileAddOutlined }];
 
   return (
     <div
       className={`${
-        toggle.sidebar ? "w-[300px]" : "w-[60px]"
+        toggle.sidebar ? 'w-[300px]' : 'w-[60px]'
       } shadow-xl bg-blue-400 duration-500 `}
     >
       <div

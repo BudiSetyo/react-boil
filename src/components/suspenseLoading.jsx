@@ -1,5 +1,5 @@
-import Icon from "@/assets/icon.png";
-import { Image } from "antd";
+import Icon from '@/assets/icon.png';
+import { Image } from 'antd';
 
 const SuspenseLoading = () => {
   return (

@@ -1,8 +1,8 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { POSTS_QUERY_KEY } from "./key";
-import { getPosts, createPost, editPost, deletePost } from "@/apis/post.api";
-import queryClient from "./queryClient";
-import { message } from "antd";
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { POSTS_QUERY_KEY } from './key';
+import { getPosts, createPost, editPost, deletePost } from '@/apis/post.api';
+import queryClient from './queryClient';
+import { message } from 'antd';
 
 export const usePosts = () => {
   const { data, error, isLoading } = useQuery({
@@ -17,7 +17,7 @@ export const usePosts = () => {
         queryKey: [POSTS_QUERY_KEY],
       });
 
-      return message.success(data?.message || "Post created successfully");
+      return message.success(data?.message || 'Post created successfully');
     },
   });
 
@@ -28,7 +28,7 @@ export const usePosts = () => {
         queryKey: [POSTS_QUERY_KEY],
       });
 
-      return message.success(data?.message || "Post edited successfully");
+      return message.success(data?.message || 'Post edited successfully');
     },
   });
 
@@ -39,7 +39,7 @@ export const usePosts = () => {
         queryKey: [POSTS_QUERY_KEY],
       });
 
-      return message.success(data?.message || "Post deleted successfully");
+      return message.success(data?.message || 'Post deleted successfully');
     },
   });
 

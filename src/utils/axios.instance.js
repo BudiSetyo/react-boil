@@ -1,12 +1,12 @@
-import axios from "axios";
-import { message } from "antd";
+import axios from 'axios';
+import { message } from 'antd';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
-    Authorization: "Bearer " + localStorage.getItem("token"),
-    "Content-Type": "application/json",
+    Authorization: 'Bearer ' + localStorage.getItem('token'),
+    'Content-Type': 'application/json',
   },
   timeout: 50000, // 50 seconds
 });
@@ -15,7 +15,7 @@ axios.interceptors.request.use((config) => {
   const newConfig = {
     ...config,
     headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
     },
   };
 
@@ -29,11 +29,11 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (
       error.response?.status === 401 &&
-      error.response?.data.message !== "Unauthorized"
+      error.response?.data.message !== 'Unauthorized'
     ) {
       localStorage.clear();
 
-      message.warning("Your session is expired please relogin!!");
+      message.warning('Your session is expired please relogin!!');
 
       setTimeout(() => (window.location.href = `${baseUrl}/auth`), 1000);
     } else {
