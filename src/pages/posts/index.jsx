@@ -7,7 +7,7 @@ const Posts = () => {
     <main className="flex flex-col gap-4">
       <PageTitle title="Posts" icon={<FileAddOutlined />} />
       <TablePost />
-      <TablePost />
+      {/* <TablePost /> */}
     </main>
   );
 };

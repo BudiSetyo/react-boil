@@ -20,7 +20,7 @@ const Auth = () => {
     <main className="bg-gray-200 min-h-screen flex justify-center items-center">
       <div className="bg-white min-w-80 py-4 px-8 rounded-lg">
         <div className="flex justify-center pt-6 pb-10">
-          <Image width={240} src={Logo} />
+          <Image width={240} src={Logo} preview={false} />
         </div>
 
         <FormAuth />

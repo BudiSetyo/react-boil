@@ -14,17 +14,15 @@ const Sidebar = () => {
     <div
       className={`${
         toggle.sidebar ? 'w-[300px]' : 'w-[60px]'
-      } shadow-xl bg-blue-400 duration-500 `}
+      } shadow-xl bg-gray-400 duration-500 `}
     >
-      <div
-        className={`h-screen w-full flex flex-col justify-between font-semibold text-gray-700 py-4 px-2`}
-      >
+      <div className="h-screen w-full flex flex-col justify-between font-semibold text-gray-700 py-4 px-2">
         <div className="flex flex-col gap-2">
           {pageMenu.map((menu, index) => {
             return (
               <button
                 key={index}
-                className={`py-1 px-3 flex gap-4 bg-white text-xl rounded`}
+                className="py-1 px-3 flex gap-4 bg-white text-xl rounded"
                 onClick={() => {}}
               >
                 <span className={``}>

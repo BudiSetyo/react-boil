@@ -34,8 +34,8 @@ const UploadImage = ({ onChange, imageUrl, loading }) => {
         showUploadList={false}
         beforeUpload={handles.beforeUpload}
         onChange={onChange}
-        action={import.meta.env.VITE_API_URL + '/image/auth'}
-        headers={{ authorization: 'Bearer ' + localStorage.getItem('token') }}
+        action={`${import.meta.env.VITE_API_URL}/image/auth`}
+        headers={{ authorization: `Bearer ${localStorage.getItem('token')}` }}
       >
         {loading ? (
           uploadButton
