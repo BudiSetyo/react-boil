@@ -1,5 +1,3 @@
-// import taosPlugin from "taos/plugin";
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: {

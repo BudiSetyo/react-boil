@@ -3,6 +3,7 @@ import Logo from "@/assets/logo.png";
 import FormAuth from "./components/form.auth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "@/utils";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/cms/");
+      navigate(`/${baseUrl}/`);
     }
   }, [token, navigate]);
 

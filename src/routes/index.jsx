@@ -9,7 +9,7 @@ import { MainLayout } from "@/components";
 // Update the router to use "/cms" as the base path
 const router = createBrowserRouter([
   {
-    path: baseUrl, // Base path for all routes
+    path: `/${baseUrl}`, // Base path for all routes
     children: [
       {
         path: "", // This will match "/cms"
@@ -27,11 +27,11 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: `${baseUrl}/auth`, // This will match "/cms/auth"
+    path: `/${baseUrl}/auth`, // This will match "/cms/auth"
     element: <Auth />,
   },
   {
-    path: "/cms/server-error", // This will match "/cms/server-error"
+    path: `/${baseUrl}/server-error`, // This will match "/cms/server-error"
     element: <Error errorCode={500} />,
   },
 ]);
