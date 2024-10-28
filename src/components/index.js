@@ -2,19 +2,21 @@
 import MainLayout from './layouts/main';
 
 // components
-import Navbar from './navbar';
+import Header from './header';
 import PageTitle from './pageTitle';
 import SuspenseLoading from './suspenseLoading';
 import ModalPermission from './modalPermission';
 import UploadImage from './uploadImage';
 import Sidebar from './sidebar';
+import Navbar from './navbar';
 
 export {
-  Navbar,
+  Header,
   MainLayout,
   PageTitle,
   SuspenseLoading,
   ModalPermission,
   UploadImage,
   Sidebar,
+  Navbar,
 };

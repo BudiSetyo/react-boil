@@ -1,16 +1,14 @@
 import Icon, {
-  FileAddOutlined,
   LogoutOutlined,
   QuestionCircleOutlined,
 } from '@ant-design/icons';
 import { Modal, Button } from 'antd';
 import useGlobalHooks from '@/hooks';
+import { pageMenu } from '@/utils';
 
 const Sidebar = () => {
   const { state } = useGlobalHooks();
   const { toggle } = state;
-
-  const menuData = [{ name: 'posts', icon: FileAddOutlined }];
 
   return (
     <div
@@ -22,7 +20,7 @@ const Sidebar = () => {
         className={`h-screen w-full flex flex-col justify-between font-semibold text-gray-700 py-4 px-2`}
       >
         <div className="flex flex-col gap-2">
-          {menuData.map((menu, index) => {
+          {pageMenu.map((menu, index) => {
             return (
               <button
                 key={index}

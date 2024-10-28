@@ -1,30 +1,50 @@
-import { useEffect } from 'react';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import useGlobalHooks from '@/hooks';
-import { baseUrl } from '@/utils';
+import { pageMenu, baseUrl } from '@/utils';
+import { Link } from 'react-router-dom';
+import Icon, { CloseOutlined, CaretRightFilled } from '@ant-design/icons';
 
 const Navbar = () => {
-  const token = localStorage.getItem('token');
   const { state, handlers } = useGlobalHooks();
   const { toggle } = state;
 
-  useEffect(() => {
-    if (!token) {
-      window.location.href = `${baseUrl}/auth`;
-    }
-  }, [token]);
-
   return (
-    <main className="sticky top-0 z-50 box-border">
-      <div className="w-full h-10 p-2 flex justify-between items-center bg-gray-100 shadow-lg">
+    <div
+      className={`${toggle.navbar ? 'top-10' : 'top-[-2000px]'} absolute inset-x-0 bottom-0 z-10 duration-700 `}
+    >
+      <div
+        className={`h-screen p-4 bg-gray-300 flex flex-col items-center text-lg font-semibold gap-2 text-gray-200`}
+      >
+        {pageMenu.map((item, index) => {
+          return (
+            <Link className="w-80" to={`/${baseUrl}/${item.name}`} key={index}>
+              <button
+                className="w-full flex items-center justify-between rounded bg-gray-400 px-4 py-2 capitalize"
+                onClick={() => handlers.handleToggle('navbar')}
+              >
+                <div className="flex gap-4">
+                  <Icon component={item.icon} />
+                  <p>{item.name}</p>
+                </div>
+
+                <CaretRightFilled />
+              </button>
+            </Link>
+          );
+        })}
+
         <button
-          className="text-gray-500 rounded hover:bg-gray-200 px-1"
-          onClick={() => handlers.handleToggle('sidebar')}
+          className="w-80 flex gap-4 items-center justify-between rounded bg-gray-400 px-4 py-2 capitalize"
+          onClick={() => handlers.handleToggle('navbar')}
         >
-          {toggle.sidebar ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+          <div className="flex gap-4">
+            <CloseOutlined />
+            <p>close</p>
+          </div>
+
+          <CaretRightFilled />
         </button>
       </div>
-    </main>
+    </div>
   );
 };
 

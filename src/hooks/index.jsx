@@ -8,12 +8,12 @@ const useGlobalHooks = () => {
 
   const handleAuth = (data) => setState({ ...state, auth: data });
 
-  const handleToggle = (key) => {
+  const handleToggle = (key, value) => {
     setState({
       ...state,
       toggle: {
         ...toggle,
-        [key]: !toggle[key],
+        [key]: value ? value : !toggle[key],
       },
     });
   };

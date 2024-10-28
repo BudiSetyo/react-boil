@@ -8,6 +8,7 @@ const StateProvider = ({ children }) => {
     auth: {},
     toggle: {
       sidebar: false,
+      navbar: false,
     },
   };
 
